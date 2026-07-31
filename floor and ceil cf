@@ -1,0 +1,46 @@
+class Solution {
+    public: int getfloor(const vector < int > & arr, int k) {
+        int n = arr.size();
+        int low = 0, high = n - 1;
+        int ans1 = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] <= k) {
+                ans1 = arr[mid];
+                low = mid + 1;
+            }
+            else
+                high = mid - 1;
+        }
+        return ans1;
+    }
+    int getceil(const vector < int > & arr, int k) {
+        int n = arr.size();
+        int low = 0, high = n - 1;
+        int ans2 = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] >= k) {
+                ans2 = arr[mid];
+                high = mid - 1;
+            }
+            else
+                low = mid + 1;
+        }
+        return ans2;
+    }
+    
+    pair < int,int > findFloorCeil(const vector < int > & arr, int k) {
+        pair < int, int > ansfinal;
+        int ans1 = getfloor(arr, k);
+        int ans2 = getceil(arr, k);
+        ansfinal = {
+            ans1,
+            ans2
+        };
+        return ansfinal;
+
+    }
+
+
+};
