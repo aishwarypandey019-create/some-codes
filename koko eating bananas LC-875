@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int maxelement(vector<int> &piles){
+        int n = piles.size();
+        int maxi = INT_MIN;
+        for(int i=0;i<n;i++){
+            maxi = max(maxi,piles[i]);
+        }
+        return maxi;
+    }
+    long long totalh(vector<int>&piles, int mid){
+        long long totalh=0;
+        int n = piles.size();
+        for(int i=0;i<n;i++){
+            totalh += ceil((double)piles[i]/(double)mid);
+        }
+        return totalh;
+
+    }
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int high= maxelement(piles);
+        long long low=1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            long long totalhoursbymid = totalh(piles,mid);
+            if(totalhoursbymid <= h) high = mid-1;//as to increase time we have to decrease the no. of banana per hour.
+            else low = mid+1;
+        }
+        return low;
+    }
+};
