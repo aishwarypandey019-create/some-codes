@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size();
+        int high = n-1;
+        string ans;
+        int stringend= n-1;
+       //conditon for if space is at the end of word eg. "hello "
+        while(high>=0){
+            if(s[high] == ' '){
+                high--;
+                stringend = high;
+            }
+            else if(high == 0 || s[high-1] == ' ') {
+                if(!ans.empty()) ans = ans+' ';
+                ans = ans + s.substr(high,stringend-high+1);
+                high--;
+                stringend = high;
+            }
+            else high--;
+        }
+        return ans;
+    }
+};
