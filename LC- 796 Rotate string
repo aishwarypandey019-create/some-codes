@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        if(s.size() != goal.size()) return false;
+        int i=0;
+        while(i < s.size()){
+            char temp = s[0];
+            int low= 1;
+            while(low<s.size()){
+                s[low-1] = s[low];
+                low++;
+            }
+            s[s.size()-1] = temp;
+            i++;
+            if(s == goal)return true;
+        }
+        return false;
+    }
+};
