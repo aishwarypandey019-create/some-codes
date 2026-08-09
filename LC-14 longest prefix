@@ -1,0 +1,15 @@
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if (strs.empty()) return "";
+        sort(strs.begin(),strs.end());
+        string first = strs.front();
+        string last = strs.back();
+int i =0;
+        for(i=0;i<first.size();i++){
+            if(first[i] != last[i]) break;
+            
+        }
+        return first.substr(0,i); //ubstring starting at index 0 with a length of 0 (substr(0, 0)) is completely valid and safely returns an empty string ""
+    }
+};
